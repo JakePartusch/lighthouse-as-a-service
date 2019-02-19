@@ -1,6 +1,6 @@
 # Lighthouse as a Service (LaaS)
 
-LaaS is an API which interfaces with Chrome and [Lighthouse](https://github.com/GoogleChrome/lighthouse) to provide uditing, performance metrics, and best practices for Web Apps.
+LaaS is an API which interfaces with Chrome and [Lighthouse](https://github.com/GoogleChrome/lighthouse) to provide auditing, performance metrics, and best practices for Web Apps.
 
 ### Example Request
 
