@@ -1,0 +1,34 @@
+{
+  "name": "lighthouse-as-a-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@serverless-chrome/lambda": "^1.0.0-55",
+    "lighthouse": "^4.1.0"
+  },
+  "devDependencies": {
+    "husky": "^1.3.1",
+    "jest": "^24.1.0",
+    "lint-staged": "^8.1.4",
+    "prettier": "^1.16.4",
+    "serverless": "^1.37.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "serverless deploy"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

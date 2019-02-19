@@ -1,0 +1,14 @@
+service: lighthouse-as-a-service
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  evaluate:
+    handler: src/handler.evaluate
+    timeout: 30
+    events:
+      - http:
+          path: evaluate
+          method: get
