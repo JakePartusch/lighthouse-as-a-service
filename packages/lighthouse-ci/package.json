@@ -1,0 +1,22 @@
+{
+  "name": "@laas/lighthouse-ci",
+  "version": "0.0.3",
+  "description": "A CLI implementation for running Lighthouse",
+  "main": "index.js",
+  "bin": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jake Partusch <jakepartusch@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "meow": "^5.0.0",
+    "node-fetch": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JakePartusch/lighthouse-as-a-service",
+    "directory": "packages/lighthouse-ci"
+  }
+}

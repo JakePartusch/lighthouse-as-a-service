@@ -1,5 +1,5 @@
 {
-  "name": "lighthouse-as-a-service",
+  "name": "@laas/lighthouse-api",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",
