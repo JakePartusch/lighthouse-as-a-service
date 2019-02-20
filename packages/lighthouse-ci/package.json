@@ -1,6 +1,6 @@
 {
   "name": "@laas/lighthouse-ci",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A CLI implementation for running Lighthouse",
   "main": "index.js",
   "bin": "./index.js",
