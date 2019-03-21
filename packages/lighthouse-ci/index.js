@@ -3,6 +3,18 @@
 const meow = require("meow");
 const fetch = require("node-fetch");
 const chalk = require("chalk");
+const ora = require("ora");
+const spinner = ora("Running Lighthouse").start();
+
+setTimeout(() => {
+  spinner.color = "yellow";
+  spinner.text = "Fetching scores";
+}, 3000);
+
+setTimeout(() => {
+  spinner.color = "green";
+  spinner.text = "Calculating averages";
+}, 5000);
 
 const fetchLighthouseScores = async (url, flags) => {
   const response = await fetch(
@@ -11,6 +23,19 @@ const fetchLighthouseScores = async (url, flags) => {
   const results = await response.json();
   return results;
 };
+
+const averageItem = (results, key) =>
+  Math.round(
+    results.reduce((previous, current) => current[key] + previous, 0) /
+      results.length
+  );
+
+const calculateAverageScores = results => ({
+  performance: averageItem(results, "performance"),
+  accessibility: averageItem(results, "accessibility"),
+  bestPractices: averageItem(results, "bestPractices"),
+  seo: averageItem(results, "seo")
+});
 
 const cli = meow(
   `
@@ -52,24 +77,35 @@ const colors = score => {
     return cli.showHelp();
   }
 
-  const results = await fetchLighthouseScores(cli.input[0]);
+  const resultPromises = [
+    fetchLighthouseScores(cli.input[0]),
+    fetchLighthouseScores(cli.input[0]),
+    fetchLighthouseScores(cli.input[0])
+  ];
+  const results = (await Promise.all(resultPromises)).filter(
+    result => !result.message
+  );
+  const resultAverage = calculateAverageScores(results);
   const { threshold } = cli.flags;
   if (threshold) {
-    Object.keys(results).forEach(key => {
-      if (Number(results[key]) < Number(threshold)) {
+    Object.keys(resultAverage).forEach(key => {
+      if (Number(resultAverage[key]) < Number(threshold)) {
         console.log(
           chalk.red(
-            `ERROR: Expected ${key} of ${threshold}, but got ${results[key]}`
+            `ERROR: Expected ${key} of ${threshold}, but got ${
+              resultAverage[key]
+            }`
           )
         );
         return process.exit(1);
       }
     });
   }
+  spinner.stop();
   console.log(chalk`
-    Performance:    {${colors(results.performance)}}
-    Accessibility:  {${colors(results.accessibility)}}
-    Best practices: {${colors(results.bestPractices)}}
-    SEO:            {${colors(results.seo)}}
+    Performance:    {${colors(resultAverage.performance)}}
+    Accessibility:  {${colors(resultAverage.accessibility)}}
+    Best practices: {${colors(resultAverage.bestPractices)}}
+    SEO:            {${colors(resultAverage.seo)}}
   `);
 })();
