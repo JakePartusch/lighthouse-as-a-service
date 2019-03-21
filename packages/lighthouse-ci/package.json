@@ -1,6 +1,6 @@
 {
   "name": "@laas/lighthouse-ci",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A CLI implementation for running Lighthouse",
   "main": "index.js",
   "bin": "./index.js",
@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jake Partusch <jakepartusch@gmail.com>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "chalk": "^2.4.2",
     "meow": "^5.0.0",
