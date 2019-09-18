@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/@laas/lighthouse-ci.svg)](https://www.npmjs.com/package/@laas/lighthouse-ci)
 [![npm](https://img.shields.io/npm/l/@laas/lighthouse-ci.svg)](https://github.com/jakepartusch/lighthouse-as-a-service/blob/master/packages/lighthouse-ci/LICENSE)
 
-> A quick, simple way to integrate [Lighthouse](https://github.com/GoogleChrome/lighthouse) performance checks into your pipeline
+> A quick, simple way to integrate [Lighthouse](https://github.com/GoogleChrome/lighthouse) performance checks into your pipeline without a Chromium dependency
 
 <p><img src="lighthouse-ci.gif?raw=true"/></p>
 
