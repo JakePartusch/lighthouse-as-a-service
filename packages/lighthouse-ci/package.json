@@ -1,6 +1,6 @@
 {
   "name": "@laas/lighthouse-ci",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "A CLI implementation for running Lighthouse",
   "main": "index.js",
   "bin": "./index.js",
@@ -12,8 +12,8 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "meow": "^5.0.0",
-    "node-fetch": "^2.3.0",
-    "ora": "^3.2.0"
+    "node-fetch": "^2.6.0",
+    "ora": "^3.4.0"
   },
   "repository": {
     "type": "git",

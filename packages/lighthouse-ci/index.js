@@ -34,7 +34,8 @@ const calculateAverageScores = results => ({
   performance: averageItem(results, "performance"),
   accessibility: averageItem(results, "accessibility"),
   bestPractices: averageItem(results, "bestPractices"),
-  seo: averageItem(results, "seo")
+  seo: averageItem(results, "seo"),
+  pwa: averageItem(results, "pwa")
 });
 
 const cli = meow(
@@ -92,9 +93,7 @@ const colors = score => {
       if (Number(resultAverage[key]) < Number(threshold)) {
         console.log(
           chalk.red(
-            `ERROR: Expected ${key} of ${threshold}, but got ${
-              resultAverage[key]
-            }`
+            `ERROR: Expected ${key} of ${threshold}, but got ${resultAverage[key]}`
           )
         );
         return process.exit(1);
@@ -107,5 +106,6 @@ const colors = score => {
     Accessibility:  {${colors(resultAverage.accessibility)}}
     Best practices: {${colors(resultAverage.bestPractices)}}
     SEO:            {${colors(resultAverage.seo)}}
+    PWA:            {${colors(resultAverage.pwa)}}
   `);
 })();

@@ -1,4 +1,6 @@
 service: lighthouse-as-a-service
+app: lighthouse-as-a-service
+org: jakepartusch
 
 provider:
   name: aws
@@ -7,7 +9,7 @@ provider:
 functions:
   evaluate:
     handler: src/handler.evaluate
-    timeout: 30
+    timeout: 180
     events:
       - http:
           path: evaluate

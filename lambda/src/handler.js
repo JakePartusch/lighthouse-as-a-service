@@ -28,15 +28,18 @@ module.exports.evaluate = async event => {
   const results = await launchChromeAndRunLighthouse(url, opts);
 
   const { categories } = results;
-  const { performance, accessibility, seo } = categories;
+  const { performance, accessibility, seo, pwa } = categories;
   console.log(JSON.stringify(categories, null, 2));
 
   const simpleScores = {
     performance: performance.score * 100,
     accessibility: accessibility.score * 100,
     bestPractices: categories["best-practices"].score * 100,
-    seo: seo.score * 100
+    seo: seo.score * 100,
+    pwa: pwa.score * 100
   };
+
+  console.log("Scores:", JSON.stringify(simpleScores, null, 2));
 
   return {
     statusCode: 200,
