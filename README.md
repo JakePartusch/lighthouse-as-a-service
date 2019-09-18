@@ -20,6 +20,7 @@ npx @laas/lighthouse-ci https://google.com
     Accessibility:  71
     Best practices: 93
     SEO:            80
+    PWA:            58
 ```
 
 ### Setting a minimum threshold
